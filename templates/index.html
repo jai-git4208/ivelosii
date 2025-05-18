@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hover-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    
+    <div class="container">
+      <header>
+        <h1 class="logo" data-aos="fade-down" data-aos-duration="1500">Ivelosi</h1>
+        <nav>
+          <a href="#" class="hvr-underline-from-center" data-aos="fade-down" data-aos-duration="1500">Home</a>
+          <a href="#" class="hvr-underline-from-center" data-aos="fade-down" data-aos-duration="2000">About</a>
+          <a href="#" class="hvr-underline-from-center" data-aos="fade-down" data-aos-duration="2500">Contact</a>
+
+          <button data-aos="fade-down" data-aos-duration="3000" class="btn-signing hvr-overline-from-left">Sign in</button>
+        </nav>
+      </header>
+
+      <main>
+      <div class="content">
+
+        <div class="tag-box" data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0">
+
+          <div class="tag">INTRODUCING &wedbar;</div>
+
+        </div>
+        <h1 data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0" data-aos-duration="2000">GLOBAL P2P<br>COMMS</h1>
+
+        <p class="description" data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0" data-aos-duration="2500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+        <div class="buttons" data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0" data-aos-duration="3000">
+
+          <a href="" class="btn-get-started hvr-underline-from-center">Get Started</a>
+          <a href="" class="btn-signing-main hvr-underline-from-center">Sign in</a>
+
+        </div>
+        <div class="globe-wrapper">
+        <spline-viewer url="https://prod.spline.design/s32on6Ba137drCTv/scene.splinecode" class="globe-3d" data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0" data-aos-duration="2500"></spline-viewer>
+        </div>
+      </div>
+      </main>
+
+    </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Script to hide Spline watermark -->
+<script src="../templates/hide-watermark.js"></script> 
+    <script>
+      AOS.init();
+      
+      // Add cursor tracking for grid light effect
+      document.addEventListener('mousemove', (e) => {
+        // Calculate position relative to viewport
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        
+        // Update CSS variables
+        document.body.style.setProperty('--x', `${x}%`);
+        document.body.style.setProperty('--y', `${y}%`);
+      });
+    </script>
+</body>
+</html>
+
+
