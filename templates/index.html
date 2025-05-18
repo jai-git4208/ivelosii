@@ -55,7 +55,9 @@
         <spline-viewer url="https://prod.spline.design/s32on6Ba137drCTv/scene.splinecode" class="globe-3d" data-aos="fade-zoom-in"
         data-aos-easing="ease-in-back"
         data-aos-delay="300"
-        data-aos-offset="0" data-aos-duration="2500"></spline-viewer>
+        data-aos-offset="0" data-aos-duration="2500"
+        hide-watermark="true"
+        disable-logo="true"></spline-viewer>
         </div>
       </div>
       </main>
@@ -64,7 +66,51 @@
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!-- Script to hide Spline watermark -->
-<script src="../templates/hide-watermark.js"></script> 
+<script src="../templates/hide-watermark.js"></script>
+<script>
+  // Direct and aggressive approach to hide Spline logo
+  function removeSplineLogo() {
+    // Target by ID
+    const logoElement = document.getElementById('logo');
+    if (logoElement) {
+      logoElement.remove();
+    }
+    
+    // Target by href attribute
+    document.querySelectorAll('a[href*="spline.design"]').forEach(el => el.remove());
+    
+    // Target any element that might be the logo
+    document.querySelectorAll('a').forEach(el => {
+      if (el.href && el.href.includes('spline.design')) {
+        el.remove();
+      }
+    });
+    
+    // Target shadow DOM if available
+    document.querySelectorAll('spline-viewer').forEach(viewer => {
+      if (viewer.shadowRoot) {
+        const shadowLogo = viewer.shadowRoot.querySelector('#logo') || 
+                          viewer.shadowRoot.querySelector('a[href*="spline.design"]');
+        if (shadowLogo) {
+          shadowLogo.remove();
+        }
+      }
+    });
+  }
+  
+  // Run immediately
+  removeSplineLogo();
+  
+  // Run after a short delay to catch elements that load later
+  setTimeout(removeSplineLogo, 500);
+  
+  // Run periodically to catch any dynamically added elements
+  setInterval(removeSplineLogo, 1000);
+  
+  // Run when DOM changes are detected
+  const observer = new MutationObserver(removeSplineLogo);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
     <script>
       AOS.init();
       
